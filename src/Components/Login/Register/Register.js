@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword ,useUpdateProfile } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 
 const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, error1] = useUpdateProfile(auth);
+
     const [passwordError, setPasswordError] = useState("")
     
     let errorElement;
-    if (error) {
-      errorElement = <p> {error?.message} </p>;
+    if (error || error1) {
+      errorElement = <p> {error?.message} {error1?.message} </p>;
     }
-  if (loading) {
+  if (loading || updating) {
     return <Loading />
   }
   if (user) {
@@ -26,7 +28,7 @@ const Register = () => {
     );
   }
 
-  const handleRegisterForm = (e) => {
+  const handleRegisterForm = async(e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
@@ -35,9 +37,10 @@ const Register = () => {
     if(password !== confirmPassword) {
       setPasswordError("Password Not Matched")
       return
-    }
-    console.log(name, email, password, confirmPassword);
-    createUserWithEmailAndPassword(email, password)
+    } 
+   
+    await createUserWithEmailAndPassword(email, password)
+    await updateProfile({ displayName: name });
   };
   return (
     <div className="container w-50 mx-auto mt-5">

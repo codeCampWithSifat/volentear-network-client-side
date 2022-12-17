@@ -20,7 +20,7 @@ const SocialLogin = () => {
     console.log(user)
     return (
       <div>
-        <p>Signed In User: {user?.email} {user1?.email}</p>
+        <p> {user?.email} {user1?.email}</p>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../../Shared/Loading/Loading";
 import Volantear from "../Volantear/Volantear";
 
 // const volantears = [
@@ -26,9 +27,9 @@ const Volantears = () => {
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
         {volantears.map((volantear) =>
           volantear.length === 0 ? (
-            "Loading..."
+            <Loading />
           ) : (
-            <Volantear volantear={volantear} key={volantear.name}></Volantear>
+            <Volantear volantear={volantear} key={volantear._id}></Volantear>
           )
         )}
       </div>
