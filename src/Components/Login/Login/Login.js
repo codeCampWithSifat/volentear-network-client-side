@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import {
   useSignInWithEmailAndPassword,
@@ -16,23 +16,23 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, error1] = useSendPasswordResetEmail(auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
+  let errorElement;
   if (error || error1) {
-    return (
-      <div>
-        <p>Error: {error?.message} {error1?.message}</p>
-      </div>
+    errorElement = (
+      <p>
+        {error?.message} {error1?.message}
+      </p>
     );
   }
   if (loading) {
     return <Loading />;
   }
   if (user) {
-    return (
-      <div>
-        <p>{user?.email}</p>
-      </div>
-    );
+    navigate(from, { replace: true });
   }
   const handleLoginForm = (e) => {
     e.preventDefault();
@@ -73,16 +73,17 @@ const Login = () => {
           Login
         </button>
       </form>
+      <h4 className="text-danger">{errorElement}</h4>
       <p className="mt-4">
         <button
           type="button"
           onClick={async () => {
             const email = emailRef.current.value;
             const success = await sendPasswordResetEmail(email);
-            if(success) {
+            if (success) {
               toast("Check Your Email And Spam Box And Reset Your Password");
             } else {
-              toast("Please  Give Your Email")
+              toast("Please  Give Your Email");
             }
           }}
           className="btn btn-link"

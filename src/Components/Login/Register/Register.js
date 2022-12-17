@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { useCreateUserWithEmailAndPassword ,useUpdateProfile } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
@@ -11,6 +11,9 @@ const Register = () => {
     const [updateProfile, updating, error1] = useUpdateProfile(auth);
 
     const [passwordError, setPasswordError] = useState("")
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     
     let errorElement;
     if (error || error1) {
@@ -20,12 +23,7 @@ const Register = () => {
     return <Loading />
   }
   if (user) {
-    console.log(user);
-    return (
-      <div>
-        <p>Registered User: {user?.email}</p>
-      </div>
-    );
+    navigate(from, { replace: true });
   }
 
   const handleRegisterForm = async(e) => {

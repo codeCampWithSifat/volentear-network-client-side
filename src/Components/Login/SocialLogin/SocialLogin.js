@@ -4,10 +4,14 @@ import auth from "../../../firebase.init";
 import google from "../../../images/social/google.png";
 import Loading from "../../Shared/Loading/Loading";
 import github from "../../../images/social/github.png"
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [signInWithGithub, user1, loading1, error1] = useSignInWithGithub(auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   let errorElement;
   if (error || error1) {
@@ -17,12 +21,7 @@ const SocialLogin = () => {
     return <Loading />
   }
   if (user || user1) {
-    console.log(user)
-    return (
-      <div>
-        <p> {user?.email} {user1?.email}</p>
-      </div>
-    );
+    navigate(from, { replace: true });
   }
 
   return (
