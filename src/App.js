@@ -8,6 +8,8 @@ import Register from "./Components/Login/Register/Register";
 import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 import RequiredAuth from "./Components/Login/RequiredAuth/RequiredAuth";
+import AddEvent from "./Components/AddEvent/AddEvent";
+import AddVolantear from "./Components/AddVolantear/AddVolantear";
 
 function App() {
   return (
@@ -19,6 +21,22 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
+        <Route
+          path="/addvolantear"
+          element={
+            <RequiredAuth>
+              <AddVolantear />
+            </RequiredAuth>
+          }
+        />
+        <Route
+          path="/addevent"
+          element={
+            <RequiredAuth>
+              <AddEvent />
+            </RequiredAuth>
+          }
+        />
         <Route
           path="/contact"
           element={

@@ -11,7 +11,7 @@ const Header = () => {
   };
 
   return (
-    <div className="p-3 mb-2 text-dark bg-success bg-opacity-10 sticky-top">
+    <div className="p-3 mb-2 text-dark bg-dark bg-opacity-25 sticky-top">
       <nav className="navbar navbar-expand-lg ">
         <div className="container">
           <Link to="/" style={{ textDecoration: "none", color: "darkblue" }}>
