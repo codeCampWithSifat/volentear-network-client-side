@@ -15,7 +15,7 @@ const AddVolantear = () => {
   const onSubmit = (data) => {
     // console.log(data)
     axios
-      .post("http://localhost:5000/addvolantear", data)
+      .post("https://volantear-network-server-production.up.railway.app/addvolantear", data)
       .then((response) => {
         console.log(response);
         const { data } = response;

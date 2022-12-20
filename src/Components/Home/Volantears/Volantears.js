@@ -7,7 +7,7 @@ import Volantear from "../Volantear/Volantear";
 const Volantears = () => {
   const [volantears, setVolantears] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/volantearsService")
+    fetch("https://volantear-network-server-production.up.railway.app/volantearsService")
       .then((res) => res.json())
       .then((data) => {
         setVolantears(data);

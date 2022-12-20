@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const AllVolantear = () => {
   const [allVolantear, setAllVolantear] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/allvolantear")
+    fetch("https://volantear-network-server-production.up.railway.app/allvolantear")
       .then((res) => res.json())
       .then((data) => {
         setAllVolantear(data);
@@ -12,7 +12,7 @@ const AllVolantear = () => {
   const handleDeleteVolantear = (id) => {
     // console.log(id);
     if (window.confirm("Are You Sure ? You Want To Delete This Item")) {
-      fetch(`http://localhost:5000/allvolantear/${id}`, {
+      fetch(`https://volantear-network-server-production.up.railway.app/allvolantear/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

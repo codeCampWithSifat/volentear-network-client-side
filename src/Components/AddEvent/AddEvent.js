@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 const AddEvent = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/addevent`, {
+    fetch(`https://volantear-network-server-production.up.railway.app/addevent`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

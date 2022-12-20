@@ -13,7 +13,7 @@ const SingleVolantear = () => {
   useEffect(() => {
     const getVolantear = async () => {
       const email = user.email;
-      const url = `http://localhost:5000/volantear?email=${email}`;
+      const url = `https://volantear-network-server-production.up.railway.app/volantear?email=${email}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
@@ -34,7 +34,7 @@ const SingleVolantear = () => {
   const handleDeleteData = (id) => {
     console.log(id);
     if (window.confirm("Are you Sure")) {
-      fetch(`http://localhost:5000/volantear/${id}`, {
+      fetch(`https://volantear-network-server-production.up.railway.app/volantear/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
