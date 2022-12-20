@@ -38,43 +38,41 @@ const Header = () => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item mx-3  p-1">
-                <Link
-                  to="/about"
-                  style={{ textDecoration: "none", color: "darkblue" }}
-                >
-                  About
-                </Link>
-              </li>
-             {user && <li className="nav-item mx-3  p-1">
-                <Link
-                  to="/addevent"
-                  style={{ textDecoration: "none", color: "darkblue" }}
-                > Add Event
-                </Link>
-              </li>}
-              {user && <li className="nav-item mx-3  p-1">
-                <Link
-                  to="/allvolantear"
-                  style={{ textDecoration: "none", color: "darkblue" }}
-                > All Volantear
-                </Link>
-              </li>}
-              {user && <li className="nav-item mx-3  p-1">
-                <Link
-                  to="/singlevolantear"
-                  style={{ textDecoration: "none", color: "darkblue" }}
-                > Singel Volantear
-                </Link>
-              </li>}
-              <li className="nav-item mx-3 p-1">
-                <Link
-                  to="/contact"
-                  style={{ textDecoration: "none", color: "darkblue" }}
-                >
-                  Contact
-                </Link>
-              </li>
+
+              {user && (
+                <li className="nav-item mx-3  p-1">
+                  <Link
+                    to="/addevent"
+                    style={{ textDecoration: "none", color: "darkblue" }}
+                  >
+                    {" "}
+                    Add Event
+                  </Link>
+                </li>
+              )}
+              {user && (
+                <li className="nav-item mx-3  p-1">
+                  <Link
+                    to="/allvolantear"
+                    style={{ textDecoration: "none", color: "darkblue" }}
+                  >
+                    {" "}
+                    All Volantear
+                  </Link>
+                </li>
+              )}
+              {user && (
+                <li className="nav-item mx-3  p-1">
+                  <Link
+                    to="/singlevolantear"
+                    style={{ textDecoration: "none", color: "darkblue" }}
+                  >
+                    {" "}
+                    Singel Volantear
+                  </Link>
+                </li>
+              )}
+
               {!user ? (
                 <li className="nav-item mx-3 p-1">
                   <Link

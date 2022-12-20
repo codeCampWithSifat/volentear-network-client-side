@@ -9,6 +9,7 @@ import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const Login = () => {
   const emailRef = useRef("");
@@ -32,13 +33,18 @@ const Login = () => {
     return <Loading />;
   }
   if (user) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   }
-  const handleLoginForm = (e) => {
+  const handleLoginForm = async(e) => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    signInWithEmailAndPassword(email, password);
+    await signInWithEmailAndPassword(email, password);
+    const {data} = await axios.post(`http://localhost:5000/token`, {email});
+    localStorage.setItem("accessToken", data.accessToken);
+    navigate(from, { replace: true });
+
+    console.log(data);
   };
   return (
     <div className="container w-50 mx-auto mt-5">

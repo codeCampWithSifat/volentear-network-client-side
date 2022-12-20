@@ -27,8 +27,8 @@ const AllVolantear = () => {
   };
   return (
     <div className="container">
-      <h2 className="text-primary text-center m-3">All The Volantears</h2>
-      <table className="table table-striped table-hover">
+      <h2 className="text-primary text-center m-3">All Of The Volantears</h2>
+      <table className="table table-striped table-hover mt-5">
         <thead>
           <tr>
             <th scope="col">Name</th>
