@@ -10,6 +10,8 @@ import Contact from "./Components/Contact/Contact";
 import RequiredAuth from "./Components/Login/RequiredAuth/RequiredAuth";
 import AddEvent from "./Components/AddEvent/AddEvent";
 import AddVolantear from "./Components/AddVolantear/AddVolantear";
+import AllVolantear from "./Components/AllVolantear/AllVolantear";
+import SingleVolantear from "./Components/SingleVolantear/SingleVolantear";
 
 function App() {
   return (
@@ -30,6 +32,14 @@ function App() {
           }
         />
         <Route
+          path="/singlevolantear"
+          element={
+            <RequiredAuth>
+              <SingleVolantear />
+            </RequiredAuth>
+          }
+        />
+        <Route
           path="/addevent"
           element={
             <RequiredAuth>
@@ -42,6 +52,14 @@ function App() {
           element={
             <RequiredAuth>
               <Contact />
+            </RequiredAuth>
+          }
+        />
+        <Route
+          path="/allvolantear"
+          element={
+            <RequiredAuth>
+              <AllVolantear />
             </RequiredAuth>
           }
         />

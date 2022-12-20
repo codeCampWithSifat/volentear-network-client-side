@@ -53,6 +53,20 @@ const Header = () => {
                 > Add Event
                 </Link>
               </li>}
+              {user && <li className="nav-item mx-3  p-1">
+                <Link
+                  to="/allvolantear"
+                  style={{ textDecoration: "none", color: "darkblue" }}
+                > All Volantear
+                </Link>
+              </li>}
+              {user && <li className="nav-item mx-3  p-1">
+                <Link
+                  to="/singlevolantear"
+                  style={{ textDecoration: "none", color: "darkblue" }}
+                > Singel Volantear
+                </Link>
+              </li>}
               <li className="nav-item mx-3 p-1">
                 <Link
                   to="/contact"
